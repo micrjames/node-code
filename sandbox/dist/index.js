@@ -17,7 +17,7 @@ app.use(express_1.default.urlencoded({ extended: false })); // parse form data
 app.set('view engine', 'ejs');
 app.set('views', path_1.default.join(__dirname, 'app/views'));
 app.get('/', (req, res) => {
-    res.render('index', { msg: "Enter the info below.", loggedIn: false });
+    res.render('index', { msg: "Enter the info below.", loggedIn: false, sent: false });
 });
 app.get('/signout', (req, res) => {
     res.redirect('/');
@@ -27,11 +27,13 @@ app.post('/login', (req, res) => {
     if (name)
         return res.status(200).render('index', {
             msg: `Thanks, ${name}, for entering the info.`,
-            loggedIn: true
+            loggedIn: true,
+            sent: false
         });
     res.status(401).render('index', {
         msg: "Field must be filled in.",
-        loggedIn: false
+        loggedIn: false,
+        sent: true
     });
 });
 app.listen(PORT, () => {

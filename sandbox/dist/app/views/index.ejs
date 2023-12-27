@@ -6,8 +6,13 @@
 	<body>
 	   <div id="container">
 		  <h1> Welcome </h1>
-		  <p><%= msg %></p>
-
+		  <% const red="red" %>
+		  <p
+		  <% if(sent) { %>
+		  class="
+		  <%= red %>
+		  <% } %>
+		  "><%= msg %></p>
 		  <% if(loggedIn) { %>
 			 <a href="/signout"> logout </a>
 		  <% } else { %>

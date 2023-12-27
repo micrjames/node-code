@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'app/views'));
 
 app.get('/', (req: Request, res: Response) => {
-   res.render('index', {msg: "Enter the info below.", loggedIn: false});
+   res.render('index', {msg: "Enter the info below.", loggedIn: false, sent: false});
 });
 app.get('/signout', (req: Request, res: Response) => {
    res.redirect('/');
@@ -25,11 +25,13 @@ app.post('/login', (req: Request, res: Response) => {
    if(name)
 	  return res.status(200).render('index', {
 		 msg: `Thanks, ${name}, for entering the info.`,
-		 loggedIn: true
+		 loggedIn: true,
+	     sent: false
 	  });
    res.status(401).render('index', {
 	  msg: "Field must be filled in.",
-	  loggedIn: false
+	  loggedIn: false,
+	  sent: true
    });
 });
 
