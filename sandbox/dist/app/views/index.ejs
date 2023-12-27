@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <%- include("partials/head"); %>
+	</head>
+	<body>
+	   <div id="container">
+		  <h1> Welcome </h1>
+		  <p><%= msg %></p>
+
+		  <% if(loggedIn) { %>
+			 <a href="/signout"> logout </a>
+		  <% } else { %>
+			 <%- include("partials/login"); %>
+		  <% } %>
+	   </div>
+	</body>
+</html>
