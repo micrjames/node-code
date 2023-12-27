@@ -56,6 +56,14 @@ input[type=text] {
 input[type=text]:focus {
    transform: scaleX(1.45);
 }
+input[type=text]:invalid {
+	border-bottom-color: red;
+}
+input[type=text]:invalid ~ .invalid-input {
+   display: block;
+   font-style: italic;
+   color: red;
+}
 button {
    position: relative;
    left: 50%;
@@ -69,4 +77,9 @@ button {
 }
 .red {
    color: red;
+}
+.invalid-input {
+   display: none;
+   font-size: 1rem;
+   list-style-position: inside;
 }
