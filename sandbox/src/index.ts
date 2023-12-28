@@ -2,6 +2,7 @@ import express, { Express, Request, Response, Application } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
+
 dotenv.config();
 
 const PORT = process.env.PORT;
@@ -22,12 +23,13 @@ app.get('/signout', (req: Request, res: Response) => {
 });
 app.post('/login', (req: Request, res: Response) => {
    const { name } = req.body;
-   if(name)
+   if(name) {
 	  return res.status(200).render('index', {
 		 msg: `Thanks, ${name}, for entering the info.`,
 		 loggedIn: true,
 	     sent: false
 	  });
+   }
    res.status(401).render('index', {
 	  msg: "Field must be filled in.",
 	  loggedIn: false,
