@@ -12,17 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Form = void 0;
 var Form = /** @class */ (function () {
     function Form(form) {
+        var _this = this;
         this.formEl = form;
-        this.fieldInputs = [];
+        this.fieldInputs = this.inputs;
+        this.formEl.addEventListener("submit", function (event) {
+            event.preventDefault();
+            console.log(_this.inputsNames);
+            var fieldSet = _this.formEl.children[0];
+            for (var i = 0; i < fieldSet.children.length; i++) {
+                console.log(fieldSet.children[i]);
+            }
+        });
     }
     Object.defineProperty(Form.prototype, "inputs", {
         get: function () {
             var fieldEls = this.formEl.elements;
+            var fieldInputs = [];
             for (var i = 0; i < fieldEls.length; i++) {
                 if (fieldEls[i].nodeName === "INPUT")
-                    this.fieldInputs = __spreadArray(__spreadArray([], this.fieldInputs, true), [fieldEls[i]], false);
+                    fieldInputs = __spreadArray(__spreadArray([], fieldInputs, true), [fieldEls[i]], false);
             }
-            return this.fieldInputs;
+            return fieldInputs;
         },
         enumerable: false,
         configurable: true

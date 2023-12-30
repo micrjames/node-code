@@ -4,29 +4,35 @@ export class Form {
    
    constructor(form: HTMLFormElement) {
 	  this.formEl = form;
-	  this.fieldInputs = [];
+	  this.fieldInputs = this.inputs;
+
+	  this.formEl.addEventListener("submit", event => {
+		 event.preventDefault();
+
+		 console.log(this.inputsNames);
+		 const fieldSet = this.formEl.children[0];
+		 const formEls = fieldSet.children;
+		 for(let i = 0; i < formEls.length; i++) {
+			for(let j = 0; i < formEls.children.length; j++) {
+			}
+		 }
+	  });
    }
    get inputs(): Element[] {
 	  const fieldEls: HTMLFormControlsCollection = this.formEl.elements;
+	  let fieldInputs: Element[] = [];
 	  for(let i = 0; i < fieldEls.length; i++) {
 		 if(fieldEls[i].nodeName === "INPUT")
-			this.fieldInputs = [...this.fieldInputs, fieldEls[i]];
+			fieldInputs = [...fieldInputs, fieldEls[i]];
 	  }
-	  return this.fieldInputs;
+	  return fieldInputs;
    }
    get inputsNames(): (string | undefined)[] {
 	  return this.fieldInputs.map(fieldInput => {
 		 return fieldInput.attributes.getNamedItem("name")?.value;
 	  });
    }
-   get values(): string[] {
-	  return this.fieldInputs.map(fieldInput => {
-		 return fieldInput;
-	  }); 
-   }
    get form(): HTMLFormElement {
 	  return this.formEl;
    }
 }
-
-
