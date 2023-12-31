@@ -19,9 +19,7 @@ var Form = /** @class */ (function () {
             event.preventDefault();
             console.log(_this.inputsNames);
             var fieldSet = _this.formEl.children[0];
-            for (var i = 0; i < fieldSet.children.length; i++) {
-                console.log(fieldSet.children[i]);
-            }
+            var formEls = fieldSet.children;
         });
     }
     Object.defineProperty(Form.prototype, "inputs", {

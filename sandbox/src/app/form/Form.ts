@@ -12,10 +12,6 @@ export class Form {
 		 console.log(this.inputsNames);
 		 const fieldSet = this.formEl.children[0];
 		 const formEls = fieldSet.children;
-		 for(let i = 0; i < formEls.length; i++) {
-			for(let j = 0; i < formEls.children.length; j++) {
-			}
-		 }
 	  });
    }
    get inputs(): Element[] {
