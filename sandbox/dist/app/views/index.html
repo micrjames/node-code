@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <%- include("partials/head"); %>
+	</head>
+	<body>
+	   <div id="container">
+		  <h1> Welcome </h1>
+		  <% const red="red" %>
+		  <p
+		  <% if(sent) { %>
+		  class="
+		  <%= red %>
+		  <% } %>
+		  "><%= msg %></p>
+		  <% if(loggedIn) { %>
+			 <a href="/signout"> logout </a>
+		  <% } else { %>
+			 <%- include("partials/login"); %>
+		  <% } %>
+	   </div>
+	   <script>
+		  var exports = {};
+	   </script>
+	   <script data-main="../main.js" src="../require.js"></script>
+	</body>
+</html>

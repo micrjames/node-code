@@ -16,7 +16,26 @@
 		  <% if(loggedIn) { %>
 			 <a href="/signout"> logout </a>
 		  <% } else { %>
-			 <%- include("partials/login"); %>
+			<form id="login-form" action="/login" method="POST">
+			   <fieldset>
+				  <legend>Login</legend>
+				  <div class="form-row">
+					 <label for="name"> enter name </label>
+					 <input
+						type="text"
+						name="name"
+						pattern="^[a-zA-Z]+(?:\s[a-zA-Z]+)?$"
+						placeholder="e.g. John Hancock"
+						autocomplete="false"
+					 />
+					 <ul class="invalid-input">
+						<li>Must contain at least two names (first and last).</li>
+						<li>Must contain a space.</li>
+					 </ul>
+				  </div>
+				  <button type="submit" class="btn"> Submit </button>
+			   </fieldset>
+			</form>
 		  <% } %>
 	   </div>
 	   <script>
