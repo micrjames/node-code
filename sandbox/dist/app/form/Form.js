@@ -17,11 +17,19 @@ var Form = /** @class */ (function () {
         this.fieldInputs = this.inputs;
         this.formEl.addEventListener("submit", function (event) {
             event.preventDefault();
-            console.log(_this.inputsNames);
-            var fieldSet = _this.formEl.children[0];
-            var formEls = fieldSet.children;
+            console.log(_this.inputsNames, _this.values);
         });
     }
+    Object.defineProperty(Form.prototype, "values", {
+        get: function () {
+            var values = [];
+            for (var i = 0; i < this.inputs.length; i++)
+                values = __spreadArray(__spreadArray([], values, true), [this.inputs[i].value], false);
+            return values;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(Form.prototype, "inputs", {
         get: function () {
             var fieldEls = this.formEl.elements;

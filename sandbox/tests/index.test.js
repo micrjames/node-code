@@ -20,6 +20,6 @@ describe("Form.", () => {
 	  expect(login.form).toBeInTheDocument();
    });
    test("Should output name on click.", () => {
-	  console.log(login.form.children);
+	  console.log(login.inputs);
    });
 });

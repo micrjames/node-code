@@ -1,6 +1,6 @@
 export class Form {
    private formEl: HTMLFormElement;
-   private fieldInputs: Element[];
+   private fieldInputs: HTMLFormElement[];
    
    constructor(form: HTMLFormElement) {
 	  this.formEl = form;
@@ -9,21 +9,25 @@ export class Form {
 	  this.formEl.addEventListener("submit", event => {
 		 event.preventDefault();
 
-		 console.log(this.inputsNames);
-		 const fieldSet = this.formEl.children[0];
-		 const formEls = fieldSet.children;
+		 console.log(this.inputsNames, this.values);
 	  });
    }
-   get inputs(): Element[] {
+   private get values(): (string | number)[] {
+		 let values: (string | number)[] = [];
+		 for(let i = 0; i < this.inputs.length; i++)
+			values = [...values, this.inputs[i].value];
+		 return values;
+   }
+   private get inputs(): HTMLFormElement[] {
 	  const fieldEls: HTMLFormControlsCollection = this.formEl.elements;
 	  let fieldInputs: Element[] = [];
 	  for(let i = 0; i < fieldEls.length; i++) {
 		 if(fieldEls[i].nodeName === "INPUT")
 			fieldInputs = [...fieldInputs, fieldEls[i]];
 	  }
-	  return fieldInputs;
+	  return fieldInputs as HTMLFormElement[];
    }
-   get inputsNames(): (string | undefined)[] {
+   private get inputsNames(): (string | undefined)[] {
 	  return this.fieldInputs.map(fieldInput => {
 		 return fieldInput.attributes.getNamedItem("name")?.value;
 	  });
