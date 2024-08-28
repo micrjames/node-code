@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const { serveResources } = require('./serveResources.js');
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 http.createServer((req, res) => {
    const urlObj = url.parse(req.url);
